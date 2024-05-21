@@ -1,9 +1,8 @@
-
 function App() {
-
+  
   return (
     <h1>
-      TAO FRONTEND
+        TAO FRONTEND
     </h1>
   )
 }
