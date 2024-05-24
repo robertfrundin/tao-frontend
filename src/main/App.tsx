@@ -1,9 +1,12 @@
 function App() {
   
   return (
-    <h1>
-        TAO FRONTEND
-    </h1>
+    <div>
+      <h1>
+          TAO FRONTEND
+      </h1>
+      <img src='src/main/liza.jpg' alt="Рыжий кот Кекс лежит у ноутбука."/>
+    </div>
   )
 }
 
