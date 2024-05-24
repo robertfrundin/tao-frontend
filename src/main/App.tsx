@@ -5,7 +5,7 @@ function App() {
       <h1>
           TAO FRONTEND
       </h1>
-      <img src='src/assets/liza.jpg' alt="Рыжий кот Кекс лежит у ноутбука."/>
+      <img src='liza.jpg' alt="Рыжий кот Кекс лежит у ноутбука."/>
     </div>
   )
 }
