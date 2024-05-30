@@ -3,7 +3,7 @@ import { TonConnectButton, TonConnectUIProvider } from '@tonconnect/ui-react';
 function App() {
   
   return (
-    <TonConnectUIProvider manifestUrl={`https://${window.location.host}/tonconnect-manifest.json`}>
+    <TonConnectUIProvider manifestUrl={`tonconnect-manifest.json`}>
       <div>
         <h1>
           TAO FRONTEND
