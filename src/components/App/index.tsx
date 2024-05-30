@@ -9,7 +9,7 @@ function App() {
           TAO FRONTEND
         </h1>
         <TonConnectButton />
-        <img src='src/images/liza.jpg' alt="Рыжий кот Кекс лежит у ноутбука."/>
+        <img src='liza.jpg'/>
       </div>
     </TonConnectUIProvider>
   )
