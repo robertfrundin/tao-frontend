@@ -1,4 +1,5 @@
-import { TonConnectButton, TonConnectUIProvider } from '@tonconnect/ui-react';
+import { TonConnectButton, TonConnectUIProvider} from '@tonconnect/ui-react';
+import DeployMultisig from 'components/DeployMultisig/DeployMultisig';
 
 function App() {
   
@@ -8,8 +9,8 @@ function App() {
         <h1>
           TAO FRONTEND
         </h1>
-        <TonConnectButton />
-        <img src='liza.jpg'/>
+        <TonConnectButton style={{margin: 'auto'}} />
+        <DeployMultisig/>
       </div>
     </TonConnectUIProvider>
   )
