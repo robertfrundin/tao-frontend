@@ -2,11 +2,12 @@ import { SendTransactionRequest, SendTransactionResponse, useTonConnectUI } from
 import { FABRIC_ADRESS } from "src/common/consts";
 import { useCallback } from "react";
 import { convertToBase64 } from "src/common/utils/converters";
-
+import { Cell } from "@ton/ton";
+import { getTransactionData } from "src/common/api/ton";
+import { getMultisigAdress } from "src/common/api/ton";
 const DeployMultisig: React.FC = ()=>{
   
   const [tonConnectUI] = useTonConnectUI();
-  console.log(btoa("Deploy new Safe"))
 
   const handeClick = useCallback(()=>{
 
@@ -19,9 +20,18 @@ const DeployMultisig: React.FC = ()=>{
       }]
         
     }
-    tonConnectUI.sendTransaction(message).then((res: SendTransactionResponse)=>{
-      console.log(res)
-      localStorage.setItem('USER_MULTISIG_ADRESS', res.boc)
+    tonConnectUI.sendTransaction(message).then(async ({boc}: SendTransactionResponse)=>{
+      const messageCell = Cell.fromBase64(boc)
+      const messageHash = messageCell.hash().toString('hex')
+
+      const {hash}= await getTransactionData(messageHash)
+
+      const multisigAdress = await getMultisigAdress(hash)
+
+      console.log(multisigAdress)
+
+      localStorage.setItem('MULTISIG_ADRESS', multisigAdress)
+
     })
   },[tonConnectUI])
 
