@@ -7,6 +7,7 @@ export default defineConfig({
   plugins: [react()],
   build: {
     manifest: 'tonconnect-manifest.json',
+    polyfillModulePreload: true,
   },
   resolve: {
     alias: {
