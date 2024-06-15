@@ -24,7 +24,7 @@ type SafeOperationReplace = {
     new: Address;
 }
 
-type SafeOperationTransfer ={
+type SafeOperationTransfer = {
     to: Address;
     value: number;
     mode: number;
