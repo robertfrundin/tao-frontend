@@ -5,7 +5,7 @@ import Content from './components/Content';
 function App() {
   
   return (
-    <TonConnectUIProvider manifestUrl={`http://178.154.228.248/tonconnect-manifest.json`}>
+    <TonConnectUIProvider manifestUrl={`https://www.tao-multisig.online/tonconnect-manifest.json`}>
       <Content/>
     </TonConnectUIProvider>
   )
