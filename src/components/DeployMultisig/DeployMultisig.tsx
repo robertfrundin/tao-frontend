@@ -5,6 +5,9 @@ import { convertToBase64 } from "src/common/utils/converters";
 import { Cell } from "@ton/ton";
 import { getTransactionData } from "src/common/api/ton";
 import { getMultisigAdress } from "src/common/api/ton";
+import { Button } from "@mui/material";
+import styles from './DeployMultisig.module.css';
+
 const DeployMultisig: React.FC = ()=>{
   
   const [tonConnectUI] = useTonConnectUI();
@@ -18,13 +21,13 @@ const DeployMultisig: React.FC = ()=>{
         amount: '200000000',
         payload: convertToBase64("Deploy new Safe")
       }]
-        
     }
+
     tonConnectUI.sendTransaction(message).then(async ({boc}: SendTransactionResponse)=>{
       const messageCell = Cell.fromBase64(boc)
       const messageHash = messageCell.hash().toString('hex')
 
-      const {hash}= await getTransactionData(messageHash)
+      const {hash} = await getTransactionData(messageHash)
 
       const multisigAdress = await getMultisigAdress(hash)
 
@@ -36,9 +39,9 @@ const DeployMultisig: React.FC = ()=>{
   },[tonConnectUI])
 
   return (
-    <button onClick={handeClick}>
-        Отправить запрос на деплой
-    </button>
+    <Button className={styles.button} onClick={handeClick} size="small">
+        + multisig account
+    </Button>
   )
 }
 

@@ -1,0 +1,14 @@
+.acc_list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.acc_item {
+    justify-content: space-between;
+}
+
+.actions {
+    display: flex;
+    gap: 5px;
+}
