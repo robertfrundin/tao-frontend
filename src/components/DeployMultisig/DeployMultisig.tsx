@@ -1,5 +1,5 @@
 import { SendTransactionRequest, SendTransactionResponse, useTonConnectUI } from "@tonconnect/ui-react";
-import { FABRIC_ADRESS } from "src/common/consts";
+import { FABRIC_ADRESS, MULTISIG_LS_KEY } from "src/common/consts";
 import { useCallback } from "react";
 import { convertToBase64 } from "src/common/utils/converters";
 import { Cell } from "@ton/ton";
@@ -33,7 +33,7 @@ const DeployMultisig: React.FC = ()=>{
 
       console.log(multisigAdress)
 
-      localStorage.setItem('MULTISIG_ADRESS', multisigAdress)
+      localStorage.setItem(MULTISIG_LS_KEY, multisigAdress)
 
     })
   },[tonConnectUI])

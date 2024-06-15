@@ -1,48 +1,45 @@
-import { FC, useEffect, useState } from "react";
-import { Wallet } from "src/types";
-import {appAPI} from "src/api";
+import { FC} from "react";
 import { Box, Button, Input, Typography } from "@mui/material";
 import styles from './AccountList.module.css';
 import { useTonAddress } from "@tonconnect/ui-react";
+import { MULTISIG_LS_KEY } from "src/common/consts";
+import useTonWalletFromApi from "src/common/hooks/useTonWalletFromApi";
 
 const AccountList: FC = () => {
-  const [accounts, setAccounts] = useState<Wallet[]>()
-
-  const fetchAccounts = async () => {
-    const accountsResponse = await appAPI.requestAccsMock()
-    setAccounts(accountsResponse)
-  }
 
   const userFriendlyAddress = useTonAddress();
-  
-  useEffect(()=>{
-    fetchAccounts()
-  }, [])
+
+  const userMultisigAdress = localStorage.getItem(MULTISIG_LS_KEY)
+
+  const multisigData = useTonWalletFromApi(userMultisigAdress)
 
   return (
     <Box paddingX={'15px'}>
       {userFriendlyAddress}
-      <Typography variant="h6" marginBottom={'8px'}>
+      <Typography variant="h6" marginBottom={'24px'}>
         My multisig accounts:
       </Typography>
       <Box className={styles.acc_list}>
-        {accounts?.map((account)=>{
-          return (
-            <Box key={account.address} className={styles.acc_item} display='flex' alignItems='center'>
-              <Typography variant="body2">
-                <Input type="text" value={account.address}/>
-              </Typography>
-              <Box className={styles.actions}>
-                <Button variant="contained" size="small">
+        {userMultisigAdress && (
+          <Box key={userMultisigAdress} className={styles.acc_item} display='flex' flexDirection={"column"}>
+            <Typography variant="body2">
+              <Input type="text" value={userMultisigAdress} style={{width: 240}}/>
+            </Typography>
+            <Typography variant="body2">
+              Balance:
+              {multisigData?.balance}
+            </Typography>
+            <Box className={styles.actions}>
+              <Button variant="contained" size="small">
                   Add owner
-                </Button>
-                <Button variant="contained" size="small">
+              </Button>
+              <Button variant="contained" size="small">
                   Initiate trasaction
-                </Button>
-              </Box>
+              </Button>
             </Box>
-          );
-        })}
+          </Box>
+        )}
+
       </Box>
     </Box>
   );
