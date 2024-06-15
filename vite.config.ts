@@ -2,12 +2,18 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
 import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill'
+import rollupNodePolyFill from 'rollup-plugin-polyfill-node'
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
   build: {
     manifest: 'tonconnect-manifest.json',
-    polyfillModulePreload: true,
+    rollupOptions: {
+      plugins: [
+        rollupNodePolyFill()
+      ]
+    }
   },
   define: {
     global: 'globalThis'
@@ -29,7 +35,6 @@ export default defineConfig({
       plugins: [
         NodeGlobalsPolyfillPlugin({
           buffer: true,
-          process: true,
         })
       ]
     }
