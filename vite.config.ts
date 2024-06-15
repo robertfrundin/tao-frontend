@@ -9,6 +9,9 @@ export default defineConfig({
     manifest: 'tonconnect-manifest.json',
     polyfillModulePreload: true,
   },
+  define: {
+    global: 'globalThis'
+  },
   resolve: {
     alias: {
       components: "/src/components",
