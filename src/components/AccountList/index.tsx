@@ -1,9 +1,11 @@
 import { FC} from "react";
 import { Box, Button, Input, Typography } from "@mui/material";
 import styles from './AccountList.module.css';
-import { toUserFriendlyAddress } from "@tonconnect/ui-react";
+import { toUserFriendlyAddress} from "@tonconnect/ui-react";
 import { MULTISIG_LS_KEY } from "src/common/consts";
+import AddOwnerForm from "src/components/AddOwnerForm";
 import useTonWalletFromApi from "src/common/hooks/useTonWalletFromApi";
+
 
 const AccountList: FC = () => {
   const userMultisigAdress = localStorage.getItem(MULTISIG_LS_KEY)
@@ -16,6 +18,7 @@ const AccountList: FC = () => {
       </Typography>
       <Box className={styles.acc_list}>
         {userMultisigAdress && (
+
           <Box key={userMultisigAdress} className={styles.acc_item} display='flex' flexDirection={"column"}>
             <Typography variant="body2">
               <Input type="text" value={toUserFriendlyAddress(userMultisigAdress)} className={styles.tonAdderss}/>
@@ -34,7 +37,6 @@ const AccountList: FC = () => {
             </Box>
           </Box>
         )}
-
       </Box>
     </Box>
   );
