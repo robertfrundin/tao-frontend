@@ -12,3 +12,8 @@
     display: flex;
     gap: 5px;
 }
+
+.tonAdderss {
+    min-width: 240px;
+    width: 100%;
+}
