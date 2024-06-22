@@ -1,9 +1,10 @@
 import { FC} from "react";
 import { Box, Button, Input, Typography } from "@mui/material";
 import styles from './AccountList.module.css';
-import { useTonAddress } from "@tonconnect/ui-react";
+import { useTonAddress, toUserFriendlyAddress} from "@tonconnect/ui-react";
 import { MULTISIG_LS_KEY } from "src/common/consts";
-import useTonWalletFromApi from "src/common/hooks/useTonWalletFromApi";
+import AddOwnerForm from "src/components/AddOwnerForm";
+
 
 const AccountList: FC = () => {
 
@@ -21,6 +22,7 @@ const AccountList: FC = () => {
       </Typography>
       <Box className={styles.acc_list}>
         {userMultisigAdress && (
+
           <Box key={userMultisigAdress} className={styles.acc_item} display='flex' flexDirection={"column"}>
             <Typography variant="body2">
               <Input type="text" value={userMultisigAdress} style={{width: 240}}/>
@@ -39,7 +41,6 @@ const AccountList: FC = () => {
             </Box>
           </Box>
         )}
-
       </Box>
     </Box>
   );
