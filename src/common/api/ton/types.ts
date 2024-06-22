@@ -12,7 +12,8 @@ export type SafeOperations = {
 }
 
 type SafeOperationAdd = {
-    owner: string;
+    $$type: 'SafeOperationAdd';
+    owner: Address;
 }
 
 type SafeOperationRemove = {
