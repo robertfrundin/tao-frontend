@@ -1,5 +1,6 @@
 import { Address, Cell, Dictionary } from "@ton/ton";
 
+
 type SafeParameters = {
     timeout: number
     requestPrice: number;
@@ -8,10 +9,12 @@ type SafeParameters = {
 
 export type SafeOperations = {
     ops: Dictionary<number, SafeOperation>;
+
     count: number;
 }
 
 type SafeOperationAdd = {
+
     owner: string;
 }
 
@@ -23,6 +26,7 @@ type SafeOperationReplace = {
     old: Address;
     new: Address;
 }
+
 
 type SafeOperationTransfer = {
     to: Address;

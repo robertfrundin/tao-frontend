@@ -5,11 +5,14 @@ import { useTonAddress, toUserFriendlyAddress} from "@tonconnect/ui-react";
 import { MULTISIG_LS_KEY } from "src/common/consts";
 import AddOwnerForm from "src/components/AddOwnerForm";
 
+
 const AccountList: FC = () => {
 
   const userFriendlyAddress = useTonAddress();
 
   const userMultisigAdress = localStorage.getItem(MULTISIG_LS_KEY)
+
+  const multisigData = useTonWalletFromApi(userMultisigAdress)
 
   return (
     <Box paddingX={'15px'}>
@@ -19,12 +22,19 @@ const AccountList: FC = () => {
       </Typography>
       <Box className={styles.acc_list}>
         {userMultisigAdress && (
-          <Box key={userMultisigAdress} className={styles.acc_item} display='flex' alignItems='center'>
+
+          <Box key={userMultisigAdress} className={styles.acc_item} display='flex' flexDirection={"column"}>
             <Typography variant="body2">
-              <Input type="text" value={toUserFriendlyAddress(userMultisigAdress)} style={{width: 240}}/>
+              <Input type="text" value={userMultisigAdress} style={{width: 240}}/>
+            </Typography>
+            <Typography variant="body2">
+              Balance:
+              {multisigData?.balance}
             </Typography>
             <Box className={styles.actions}>
-              <AddOwnerForm multisigAdress={userMultisigAdress}/>
+              <Button variant="contained" size="small">
+                  Add owner
+              </Button>
               <Button variant="contained" size="small">
                   Initiate trasaction
               </Button>
