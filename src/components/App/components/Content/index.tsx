@@ -10,6 +10,7 @@ const Content = () => {
       <Box display='flex' justifyContent='center'>
         <TonConnectButton style={{ float: "right" }}/>
       </Box>
+      <DeployMultisig/>
       <AccountList/>
       <Box display='flex' paddingX={'15px'}>
         <DeployMultisig/>

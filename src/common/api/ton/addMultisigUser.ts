@@ -1,7 +1,7 @@
 import tonApi from 'src/common/api/ton'
 import callUntillSuccess from 'src/common/utils/callUntillSuccess'
 
-async function getTransactionEvent (hash: string){
+export async function getTransactionEvent (hash: string){
   return await tonApi.events.getEvent(hash)
 }
 

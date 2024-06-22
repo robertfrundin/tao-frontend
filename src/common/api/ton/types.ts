@@ -1,4 +1,4 @@
-import { Address, Cell } from "@ton/ton";
+import { Address, Cell, Dictionary } from "@ton/ton";
 
 type SafeParameters = {
     timeout: number
@@ -6,13 +6,13 @@ type SafeParameters = {
     timelock: number;
 }
 
-type SafeOperations = {
-    ops: Record<number, SafeOperation>;
+export type SafeOperations = {
+    ops: Dictionary<number, SafeOperation>;
     count: number;
 }
 
 type SafeOperationAdd = {
-    owner: Address;
+    owner: string;
 }
 
 type SafeOperationRemove = {
